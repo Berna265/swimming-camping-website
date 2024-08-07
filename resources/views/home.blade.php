@@ -86,14 +86,21 @@
             </div>
             <div class="col-md-4 m-auto justify-content-center">
                 <div>
-                    <label class="d-block py-3" for="destination">Destination</label>
-                    <select id="services" name="services">
-                        <option value=""> select destination</option>
-                    </select>
+                    <label class="d-block py-3" for="destination">Services</label>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select services
+                        </button>
+                        <div class="dropdown-menu" id="servicesForm">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script>
         // Array of camping site services
         const campingServices = [
@@ -109,32 +116,25 @@
             "WiFi"
         ];
 
-        // Get the dropdown element
-        const servicesDropdown = document.getElementById('services');
+        const form = document.getElementById('servicesForm');
 
-        // Loop through the array and create option elements
         campingServices.forEach(service => {
-            console.log(service);
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = service;
+            checkbox.name = 'services';
+            checkbox.value = service;
+            checkbox.className = 'p-2';
 
-            // Create a container for each service
-            const container = document.createElement('option');
-
-            // Create the checkbox
-            const checkBox = document.createElement('input');
-            checkBox.type = 'checkbox';
-            checkBox.id = service.toLowerCase().replace(/ /g, '-');
-
-            // Create a label for the checkbox
             const label = document.createElement('label');
-            label.htmlFor = checkBox.id;
+            label.htmlFor = service;
             label.textContent = service;
 
-            // Append the checkbox and label to the container
-            container.appendChild(checkBox);
-            container.appendChild(label);
+            const br = document.createElement('br');
 
-            // Append the container to the dropdown's parent container
-            servicesDropdown.appendChild(container);
+            form.appendChild(checkbox);
+            form.appendChild(label);
+            form.appendChild(br);
         });
     </script>
 </body>
