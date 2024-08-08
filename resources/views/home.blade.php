@@ -94,8 +94,7 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Select services
                         </button>
-                        <div class="dropdown-menu" id="servicesForm">
-
+                        <div class="dropdown-menu px-3" id="servicesForm">
                         </div>
 
                     </div>
@@ -134,14 +133,10 @@
             checkbox.value = service;
             checkbox.form = 'searchForm';
 
-            //only csll this when i click
-
-
-
-
             const label = document.createElement('label');
             label.htmlFor = `service-${index}`;
             label.textContent = service;
+            label.classList.add('px-2');
 
             const br = document.createElement('br');
 
@@ -157,9 +152,9 @@
             document.getElementById('output').innerHTML = selectedItems;
         }
 
-        const selectedcheckbox = document.getElementsByTagName('input');
+        const selectedCheckbox = document.getElementsByTagName('input');
 
-        for (const element of selectedcheckbox) {
+        for (const element of selectedCheckbox) {
             if (element.type == 'checkbox') {
                 element.addEventListener("click", () => {
                     select(element.id)
