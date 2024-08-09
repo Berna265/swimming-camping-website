@@ -147,7 +147,13 @@
 
         function select(checkboxId) {
             const selectedItem = document.getElementById(checkboxId);
-            selectedItems.push(selectedItem.value)
+            const value = selectedItem.value;
+            const index = selectedItems.indexOf(value)
+            if (index === -1) {
+                selectedItems.push(value)
+            } else {
+                selectedItems.splice(index, 1)
+            }
             console.log('selectedItem', selectedItem.value);
             document.getElementById('output').innerHTML = selectedItems;
         }
