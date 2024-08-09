@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +24,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/information', function () {
-    return view('inforamtion');
-});
+Route::get('/information', [PageController::class, 'information']);
 
+Route::get('/available', [PageController::class, 'available']);
+
+Route::get('/reviews', [PageController::class, 'reviews']);
+
+//PlaceController
+Route::get('/places', [PlaceController::class, 'create'])->name('places.create');
+Route::post('/places', [PlaceController::class, 'store']);
+
+//Route to search page
+Route::get('/search', [SearchController::class, 'search'])->name('search');
